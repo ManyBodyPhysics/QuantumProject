@@ -1,4 +1,10 @@
 # QuantumProject (quantum engineering, how to make quantum computers that work)
+
+## Study of two particle systems
+   - Von Neumann entropy and entaglemment
+   - time evolution with electric fields/other mechanisms (raising/lowering of wells)
+   - state tomography and relation to density matrix (experimental interpretation) 
+   - developing a specific analog-digital quantum simulator with two-qubits (operations on qubits)
 ## Develop FCI code for ion traps and quantum dots
    - MHJ's code
    - Yoshida and Shimuzu https://arxiv.org/abs/2105.08256
@@ -17,6 +23,7 @@
    - Suggestions for circuits with given gates, how to make fields that perform different operations
    - Model hamiltonians and observables
    - Lowering and raising of wells and gates
+   - Setting up electric fields/laser with time evolution/dipole approx
 ## Von Neumann Entropy and Entanglement
    - 1d systems with two and more particle
    - 2d systems with two electrons in two wells
