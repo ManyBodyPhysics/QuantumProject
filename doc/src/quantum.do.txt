@@ -2,6 +2,43 @@ TITLE: From quantum many-body theories to quantum computing, quantum engineering
 AUTHOR: Morten Hjorth-Jensen at "National Superconducting Cyclotron Laboratory":"http://www.nscl.msu.edu/" and "Department of Physics and Astronomy":"https://www.pa.msu.edu/", "Michigan State University":"http://www.msu.edu/", East Lansing, MI 48824, USA
 DATE:  today
 
+===== Introduction =====
+
+
+# QuantumProject (quantum engineering, how to make quantum computers that work)
+
+## Study of two particle systems
+   - Von Neumann entropy and entaglemment
+   - time evolution with electric fields/other mechanisms (raising/lowering of wells)
+   - state tomography and relation to density matrix (experimental interpretation) 
+   - developing a specific analog-digital quantum simulator with two-qubits (operations on qubits)
+## Develop FCI code for ion traps and quantum dots
+   - MHJ's code
+   - Yoshida and Shimuzu https://arxiv.org/abs/2105.08256
+   - Set up mtx elements (one-body and twobody) in uncoupled basis for 2d quantum (3d and 1d systems). 
+   - Øyvind's 3 and 4 particle code
+   - Veronika's master thesis, FCI for quantum dots
+   - Simen Kvaal's FCI code https://arxiv.org/abs/0810.2644
+   - Effective interaction for many particles and FCI
+   - Time development
+   - Adiabatic(?) switching on/off of Coulumb interaction
+## Basis sets
+   - DVR basis
+   - Is the basis 'the same' after and under a perturbation?
+
+## Operations on qubits
+   - Suggestions for circuits with given gates, how to make fields that perform different operations
+   - Model hamiltonians and observables
+   - Lowering and raising of wells and gates
+   - Setting up electric fields/laser with time evolution/dipole approx
+## Von Neumann Entropy and Entanglement
+   - 1d systems with two and more particle
+   - 2d systems with two electrons in two wells
+   - 3d system with two electrons in two wells
+   - Move to three electrons (qd) and four electrons
+## From FCI to many-body methods with time dependence
+   - Academic exercise: ground state evolution with time-dependence
+
 
 
 
