@@ -4,6 +4,7 @@ DATE:  today
 
 ===== Introduction =====
 
+Set up structure with chapters, may be develop everyhting as a jupyter book instead
 
 # QuantumProject (quantum engineering, how to make quantum computers that work)
 
