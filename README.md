@@ -31,3 +31,5 @@
    - Move to three electrons (qd) and four electrons
 ## From FCI to many-body methods with time dependence
    - Academic exercise: ground state evolution with time-dependence
+
+## Point defect theory and experiment
