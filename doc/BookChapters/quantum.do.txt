@@ -4,7 +4,9 @@ DATE:  today
 
 ===== Introduction =====
 
-Set up structure with chapters, may be develop everyhting as a jupyter book instead
+Set up structure with chapters, may be develop everyhting as a jupyter
+book instead. make links etc with different chapters with material
+that can be deepened by clicking on appropriate links
 
 # QuantumProject (quantum engineering, how to make quantum computers that work)
 
