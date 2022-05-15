@@ -4,9 +4,18 @@ DATE:  today
 
 ===== Introduction =====
 
-Set up structure with chapters, may be develop everyhting as a jupyter
+Set up structure with chapters, may be develop everything as a jupyter
 book instead. make links etc with different chapters with material
-that can be deepened by clicking on appropriate links
+that can be deepened by clicking on appropriate links.
+
+Basic structure:
+- Overarching motivation with layout of ideas
+- Theory needed, what we have and what we need to develop
+  - FCI studies of two and more electrons
+  - MCTDHF, multi-configuration time dependent Hartree-Fock
+  - Description of entanglement
+  - Studies of specific systems
+  - Moving to many particles, time-dependent CC and links with TDDFT.
 
 # QuantumProject (quantum engineering, how to make quantum computers that work)
 
