@@ -6,7 +6,9 @@ DATE:  today
 
 Set up structure with chapters, may be develop everything as a jupyter
 book instead. make links etc with different chapters with material
-that can be deepened by clicking on appropriate links.
+that can be deepened by clicking on appropriate links. One needs also
+a basic material set up for quantum computing. Can use that for
+developing notes on QC for intensive school.
 
 Basic structure:
 - Overarching motivation with layout of ideas
