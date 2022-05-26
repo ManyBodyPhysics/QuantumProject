@@ -1,5 +1,6 @@
 
-===== Level crossing in an exactly solvable model =====
+
+===== Level crossing and entanglement in a simple  solvable model =====
 
 
 In order to study the importance of intruder states, we let
