@@ -1,0 +1,4 @@
+Translating doconce text in model.do.txt to ipynb
+
+*** warning: latex envir \begin{eqnarray} does not work well in Markdown.    Stick to \[ ... \], equation, equation*, align, or align*    environments in math environments.
+output in model.ipynb

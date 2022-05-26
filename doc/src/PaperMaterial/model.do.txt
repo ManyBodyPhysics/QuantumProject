@@ -1,0 +1,83 @@
+
+===== Level crossing in an exactly solvable model =====
+
+
+In order to study the importance of intruder states, we let
+our hamiltonian depend linearly on a strength parameter $\lambda$
+!bt
+\[
+       H=H_0+\lambda H_1,
+\]
+!et
+with $\lambda \in [0,1]$, where the limits $\lambda=0$ and $\lambda=1$ represent the 
+non-interacting (or unperturbed) and fully interacting system, respectively.
+The model is an eigenvalue
+problem with only two available states, which we label
+$P$ and $Q$. Below we will let 
+state $P$ represent the model-space
+eigenvalue whereas state $Q$ represents 
+the eigenvalue of the excluded space.
+The unperturbed solutions to this problem are
+!bt
+\begin{equation}
+       H_0\Phi_P =\epsilon_P\Phi_P
+\end{equation}
+!et
+and
+!bt
+\begin{equation}
+       H_0\Phi_Q =\epsilon_Q\Phi_Q,
+\end{equation}
+!et
+with $\epsilon_P < \epsilon_Q$. We label the off-diagonal
+matrix elements $X$, while $X_P=\bra{\Phi_P}H_1\ket{\Phi_P}$ and
+$X_Q=\bra{\Phi_Q}H_1\ket{\Phi_Q}$.
+The exact eigenvalues problem
+!bt
+\begin{equation}
+\left(\begin{array}{cc}\epsilon_P+zX_P &zX \\
+zX &\epsilon_Q+zX_Q \end{array}\right)
+\end{equation}
+!et
+yields
+!bt
+\begin{eqnarray}
+     label{eq:exact}
+     E(z)=&\frac{1}{2}\left\{\epsilon_P +\epsilon_Q +zX_P
+     +zX_Q \pm \left(
+     \epsilon_Q -\epsilon_P +zX_Q-zX_P\right) \right. \\ \nonumber
+     & \left. \times\sqrt{1+\frac{4z^2X^2}{\left(
+     \epsilon_Q -\epsilon_P +zX_Q-zX_P\right)^2}}
+     \right\}.
+\end{eqnarray}
+!et
+An RS expansion for the lowest
+eigenstate (defining states $P$ and $Q$ as the model and excluded
+spaces, respectively) can be obtained by expanding the lowest
+eigenvalue as
+!bt
+\begin{equation}
+      E=\epsilon_P +zX_P+\frac{z^2X^2}{\epsilon_P -\epsilon_Q}+
+      \frac{z^3X^2(X_Q-X_P)}{(\epsilon_P -\epsilon_Q)^2}+
+      \frac{z^4X^2(X_Q-X_P)^2}{(\epsilon_P -\epsilon_Q)^3}
+      -\frac{z^4X^4}{(\epsilon_P -\epsilon_Q)^3}+\dots,
+      \label{eq:modela}
+\end{equation}
+!et
+which can be viewed as an effective interaction for state $P$ in which
+state $Q$ is taken into account to successive orders of the perturbation.
+In this work we choose the parameters $\epsilon_P=0$, $\epsilon_Q=4$,
+$X_P=-X_Q=3$ and $X=0.2$. The exact solutions
+given by eq.\ (ref{eq:exact})
+are shown in fig.\ 1 as functions of the
+strength parameter $\lambda$. Pertinent to our choice of
+parameters, is that at $\lmabda\geq 2/3$,  the lowest eigenstate is
+dominated by $\Phi_Q$ while the upper is $\Phi_P$. At $\lambda=1$ the
+$\Phi_P$ mixing of the lowest eigenvalue
+is $1\%$ while for $z\leq 2/3$
+we have a $\Phi_P$ component of more than $90\%$.
+The character of the eigenvectors has therefore been interchanged
+when passing $z=2/3$. The value of the parameter $X$ represents the
+strength of the coupling between the model space and the excluded space.
+Thus, this simple
+
