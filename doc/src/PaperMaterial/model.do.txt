@@ -82,42 +82,39 @@ we have a $\Phi_P$ component of more than $90\%$.
 The character of the eigenvectors has therefore been interchanged
 when passing $z=2/3$. The value of the parameter $X$ represents the
 strength of the coupling between the model space and the excluded space.
-Thus, this simple Hamiltonian can be used to find the eigenpairs rather easily. The following code computes and plots the eigenvalues.
+Thus, this simple Hamiltonian can be used to find the eigenpairs rather easily. The following code computes and plots the eigenvalues. Note that here we permute the eigenvalues as functions of 
 !bc pycod
+%matplotlib inline
+
 from  matplotlib import pyplot as plt
 import numpy as np
 dim = 2
 #Setting up a tridiagonal matrix and finding eigenvectors and eigenvalues
 Hamiltonian = np.zeros((dim,dim))
-!number of lambda values
-n = 20
-lambda = np.array(0, 1, n)
+#number of lambda values
+n = 100
+lmbd = np.linspace(0.,1.0,n)
 e0 = 0.0
 e1 = 4.0
-X = 0.25
+X = 0.20
 Xp = 3.0
-eigenvalues = np.zeros((dim,n))
-for i in range(0,n-1): 
-    Hamiltonian[0,0] = lambda[i]*X+e0
-    Hamiltonian[0,1] = lambda[i]*Xp
+Eigenvalue = np.zeros((dim,n))
+for i in range(n): 
+    Hamiltonian[0,0] = lmbd[i]*Xp+e0
+    Hamiltonian[0,1] = lmbd[i]*X
     Hamiltonian[1,0] = Hamiltonian[0,1]
-    Hamiltonian[1,1] = e1+lambda[i]*X
+    Hamiltonian[1,1] = e1+lmbd[i]*(-Xp)
     # diagonalize and obtain eigenvalues, not necessarily sorted
     EigValues, EigVectors = np.linalg.eig(Hamiltonian)
     # sort eigenvectors and eigenvalues
     permute = EigValues.argsort()
     EigValues = EigValues[permute]
     EigVectors = EigVectors[:,permute]
-    eigenvalues[:,i] = Eigvalues
-
-
-FirstEigvalue = eigenvalues[0,:]
-SecondEigvalue = eigenvalues[1,:]
-plt.plot(lambda, FirstEigvalue ,'b-',r, SecondEigvalue,'g-',)
-#plt.axis([0,4.6,0.0, 0.025])
-plt.xlabel(r'$r$')
-plt.ylabel(r'Radial probability $r^2|R(r)|^2$')
+    Eigenvalue[0,i] = EigValues[0]
+    Eigenvalue[1,i] = EigValues[1]
+plt.plot(lmbd, Eigenvalue[0,:] ,'b-',lmbd, Eigenvalue[1,:],'g-',)
+plt.xlabel('$\lambda$')
+plt.ylabel('Eigenvalues')
 plt.show()
-
 !ec
 
