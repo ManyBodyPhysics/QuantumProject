@@ -3,6 +3,8 @@
 ===== Level crossing and entanglement in a simple  solvable model =====
 
 
+
+
 In order to study the importance of intruder states, we let
 our hamiltonian depend linearly on a strength parameter $\lambda$
 !bt
@@ -72,7 +74,7 @@ $X_P=-X_Q=3$ and $X=0.2$. The exact solutions
 given by eq.\ (ref{eq:exact})
 are shown in fig.\ 1 as functions of the
 strength parameter $\lambda$. Pertinent to our choice of
-parameters, is that at $\lmabda\geq 2/3$,  the lowest eigenstate is
+parameters, is that at $\lambda\geq 2/3$,  the lowest eigenstate is
 dominated by $\Phi_Q$ while the upper is $\Phi_P$. At $\lambda=1$ the
 $\Phi_P$ mixing of the lowest eigenvalue
 is $1\%$ while for $z\leq 2/3$
@@ -80,5 +82,42 @@ we have a $\Phi_P$ component of more than $90\%$.
 The character of the eigenvectors has therefore been interchanged
 when passing $z=2/3$. The value of the parameter $X$ represents the
 strength of the coupling between the model space and the excluded space.
-Thus, this simple
+Thus, this simple Hamiltonian can be used to find the eigenpairs rather easily. The following code computes and plots the eigenvalues.
+!bc pycod
+from  matplotlib import pyplot as plt
+import numpy as np
+dim = 2
+#Setting up a tridiagonal matrix and finding eigenvectors and eigenvalues
+Hamiltonian = np.zeros((dim,dim))
+!number of lambda values
+n = 20
+lambda = np.array(0, 1, n)
+e0 = 0.0
+e1 = 4.0
+X = 0.25
+Xp = 3.0
+eigenvalues = np.zeros((dim,n))
+for i in range(0,n-1): 
+    Hamiltonian[0,0] = lambda[i]*X+e0
+    Hamiltonian[0,1] = lambda[i]*Xp
+    Hamiltonian[1,0] = Hamiltonian[0,1]
+    Hamiltonian[1,1] = e1+lambda[i]*X
+    # diagonalize and obtain eigenvalues, not necessarily sorted
+    EigValues, EigVectors = np.linalg.eig(Hamiltonian)
+    # sort eigenvectors and eigenvalues
+    permute = EigValues.argsort()
+    EigValues = EigValues[permute]
+    EigVectors = EigVectors[:,permute]
+    eigenvalues[:,i] = Eigvalues
+
+
+FirstEigvalue = eigenvalues[0,:]
+SecondEigvalue = eigenvalues[1,:]
+plt.plot(lambda, FirstEigvalue ,'b-',r, SecondEigvalue,'g-',)
+#plt.axis([0,4.6,0.0, 0.025])
+plt.xlabel(r'$r$')
+plt.ylabel(r'Radial probability $r^2|R(r)|^2$')
+plt.show()
+
+!ec
 
