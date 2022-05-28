@@ -2,6 +2,7 @@
 
 ## Study of two particle systems
    - Von Neumann entropy and entaglemment
+   - Simple two-level model to illustrate avoided crossing and entanglement
    - time evolution with electric fields/other mechanisms (raising/lowering of wells)
    - state tomography and relation to density matrix (experimental interpretation) 
    - developing a specific analog-digital quantum simulator with two-qubits (operations on qubits)
