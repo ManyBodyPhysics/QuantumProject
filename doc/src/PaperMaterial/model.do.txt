@@ -2,7 +2,7 @@
 
 ===== Level crossing and entanglement in a simple  solvable model =====
 
-
+Add discussion about entanglement.
 
 
 In order to study the importance of intruder states, we let
