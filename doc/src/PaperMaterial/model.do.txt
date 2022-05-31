@@ -2,7 +2,7 @@
 
 ===== Level crossing and entanglement in a simple  solvable model =====
 
-Add discussion about entanglement.
+Add discussion about entanglement and expand model to include 4 x 4 matrix
 
 
 In order to study the importance of intruder states, we let
