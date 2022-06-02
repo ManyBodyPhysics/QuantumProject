@@ -121,28 +121,29 @@ plt.show()
 
 
 !bc pycod
-
 %matplotlib inline
-
 from  matplotlib import pyplot as plt
 import numpy as np
 dim = 4
 Hamiltonian = np.zeros((dim,dim))
 #number of lambda values
-n = 10
+n = 20
 lmbd = np.linspace(0.,1.0,n)
-e0 = 0.0
-e1 = 4.0
-X = 0.20
+X = 0.30
 Xp = 3.0
+# Non-diagonal part as sigma_x tensor product with sigma_x
 sx = np.matrix([[0,1],[1,0]])
+# Diagonal part as sigma_z tensor product with sigma_z
 sz = np.matrix([[1,0],[0,-1]])
-a = X*np.kron(sx, sx)
-b = Xp*np.kron(sz, sz)
-v = [0.0, 1.0, 4.0, 5.0]
-D = np.diag(v)
-
+sx2 = X*np.kron(sx, sx)
+sz2 = Xp*np.kron(sz, sz)
+noninteracting = [0.0, 0.5, 6.5, 7.0]
+D = np.diag(noninteracting)
+print(sx2)
+print(sz2)
+print(D+sx2+sz2)
 Eigenvalue = np.zeros((dim,n))
+
 for i in range(n): 
     Hamiltonian = lmbd[i]*(a+b)+D
     # diagonalize and obtain eigenvalues, not necessarily sorted
@@ -151,13 +152,15 @@ for i in range(n):
     permute = EigValues.argsort()
     EigValues = EigValues[permute]
     EigVectors = EigVectors[:,permute]
+    EigVectors = np.linalg.inv(EigVectors)
+    print(EigVectors)
     Eigenvalue[0,i] = EigValues[0]
     Eigenvalue[1,i] = EigValues[1]
     Eigenvalue[2,i] = EigValues[2]
     Eigenvalue[3,i] = EigValues[3]
 plt.plot(lmbd, Eigenvalue[0,:] ,'b-',lmbd, Eigenvalue[1,:],'g-',)
-plt.plot(lmbd, Eigenvalue[3,:] ,'r-',lmbd, Eigenvalue[3,:],'y-',)
+plt.plot(lmbd, Eigenvalue[2,:] ,'r-',lmbd, Eigenvalue[3,:],'y-',)
 plt.xlabel('$\lambda$')
 plt.ylabel('Eigenvalues')
-#plt.show()
+plt.show()
 !ec
