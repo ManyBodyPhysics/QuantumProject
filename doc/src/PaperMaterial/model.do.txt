@@ -164,3 +164,20 @@ plt.xlabel('$\lambda$')
 plt.ylabel('Eigenvalues')
 plt.show()
 !ec
+
+
+
+!bc pycod
+%matplotlib inline
+from  matplotlib import pyplot as plt
+import numpy as np
+dim = 4
+density = np.zeros((dim,dim))
+basis = [1.0, 0.0, 0.0, 1.0]
+density = np.outer(basis,basis)
+print(density)
+d = np.matrix([[1,0],[0,1]])
+v = [1.0,0.0]
+proj = np.tensordot(v,d,0)
+print(proj)
+!ec
