@@ -6,13 +6,13 @@ Add discussion about entanglement and expand model to include 4 x 4 matrix
 
 
 In order to study the importance of intruder states, we let
-our hamiltonian depend linearly on a strength parameter $\lambda$
+our hamiltonian depend linearly on a strength parameter $z$
 !bt
 \[
-       H=H_0+\lambda H_1,
+       H=H_0+z H_1,
 \]
 !et
-with $\lambda \in [0,1]$, where the limits $\lambda=0$ and $\lambda=1$ represent the 
+with $z \in [0,1]$, where the limits $z=0$ and $z=1$ represent the 
 non-interacting (or unperturbed) and fully interacting system, respectively.
 The model is an eigenvalue
 problem with only two available states, which we label
@@ -38,8 +38,8 @@ $X_Q=\bra{\Phi_Q}H_1\ket{\Phi_Q}$.
 The exact eigenvalues problem
 !bt
 \begin{equation}
-\left(\begin{array}{cc}\epsilon_P+zX_P &zX \\
-zX &\epsilon_Q+zX_Q \end{array}\right)
+\left(\begin{array}{cc}\epsilon_P+z X_P &zX \\
+zX &\epsilon_Q+z X_Q \end{array}\right)
 \end{equation}
 !et
 yields
@@ -73,9 +73,9 @@ In this work we choose the parameters $\epsilon_P=0$, $\epsilon_Q=4$,
 $X_P=-X_Q=3$ and $X=0.2$. The exact solutions
 given by eq.\ (ref{eq:exact})
 are shown in fig.\ 1 as functions of the
-strength parameter $\lambda$. Pertinent to our choice of
-parameters, is that at $\lambda\geq 2/3$,  the lowest eigenstate is
-dominated by $\Phi_Q$ while the upper is $\Phi_P$. At $\lambda=1$ the
+strength parameter $z$. Pertinent to our choice of
+parameters, is that at $z\geq 2/3$,  the lowest eigenstate is
+dominated by $\Phi_Q$ while the upper is $\Phi_P$. At $z=1$ the
 $\Phi_P$ mixing of the lowest eigenvalue
 is $1\%$ while for $z\leq 2/3$
 we have a $\Phi_P$ component of more than $90\%$.
@@ -113,8 +113,51 @@ for i in range(n):
     Eigenvalue[0,i] = EigValues[0]
     Eigenvalue[1,i] = EigValues[1]
 plt.plot(lmbd, Eigenvalue[0,:] ,'b-',lmbd, Eigenvalue[1,:],'g-',)
-plt.xlabel('$\lambda$')
+plt.xlabel('$z$')
 plt.ylabel('Eigenvalues')
 plt.show()
 !ec
 
+
+
+!bc pycod
+
+%matplotlib inline
+
+from  matplotlib import pyplot as plt
+import numpy as np
+dim = 4
+Hamiltonian = np.zeros((dim,dim))
+#number of lambda values
+n = 10
+lmbd = np.linspace(0.,1.0,n)
+e0 = 0.0
+e1 = 4.0
+X = 0.20
+Xp = 3.0
+sx = np.matrix([[0,1],[1,0]])
+sz = np.matrix([[1,0],[0,-1]])
+a = X*np.kron(sx, sx)
+b = Xp*np.kron(sz, sz)
+v = [0.0, 1.0, 4.0, 5.0]
+D = np.diag(v)
+
+Eigenvalue = np.zeros((dim,n))
+for i in range(n): 
+    Hamiltonian = lmbd[i]*(a+b)+D
+    # diagonalize and obtain eigenvalues, not necessarily sorted
+    EigValues, EigVectors = np.linalg.eig(Hamiltonian)
+    # sort eigenvectors and eigenvalues
+    permute = EigValues.argsort()
+    EigValues = EigValues[permute]
+    EigVectors = EigVectors[:,permute]
+    Eigenvalue[0,i] = EigValues[0]
+    Eigenvalue[1,i] = EigValues[1]
+    Eigenvalue[2,i] = EigValues[2]
+    Eigenvalue[3,i] = EigValues[3]
+plt.plot(lmbd, Eigenvalue[0,:] ,'b-',lmbd, Eigenvalue[1,:],'g-',)
+plt.plot(lmbd, Eigenvalue[3,:] ,'r-',lmbd, Eigenvalue[3,:],'y-',)
+plt.xlabel('$\lambda$')
+plt.ylabel('Eigenvalues')
+#plt.show()
+!ec
