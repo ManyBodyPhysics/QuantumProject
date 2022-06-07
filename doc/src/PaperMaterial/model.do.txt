@@ -125,12 +125,15 @@ plt.show()
 from  matplotlib import pyplot as plt
 import numpy as np
 from scipy.linalg import logm, expm
+def log2M(a): # base 2 matrix logarithm
+    return logm(a)/np.log(2.0)
+
 dim = 4
 Hamiltonian = np.zeros((dim,dim))
 #number of lambda values
-n = 10
-lmbd = np.linspace(0.,1.0,n)
-X = 0.30
+n = 40
+lmbd = np.linspace(0.0,1.0,n)
+X = 2.0
 Xp = 3.0
 # Non-diagonal part as sigma_x tensor product with sigma_x
 sx = np.matrix([[0,1],[1,0]])
@@ -138,12 +141,10 @@ sx = np.matrix([[0,1],[1,0]])
 sz = np.matrix([[1,0],[0,-1]])
 sx2 = X*np.kron(sx, sx)
 sz2 = Xp*np.kron(sz, sz)
-noninteracting = [0.0, 0.5, 6.5, 7.0]
+noninteracting = [0.0, 2.5, 6.5, 7.0]
 D = np.diag(noninteracting)
 Eigenvalue = np.zeros((dim,n))
-
-def log2M(a): # base 2 matrix logarithm
-    return logm(a)/np.log(2.0)
+Entropy = np.zeros(n)
 
 for i in range(n): 
     Hamiltonian = lmbd[i]*(sx2+sz2)+D
@@ -153,12 +154,10 @@ for i in range(n):
     permute = EigValues.argsort()
     EigValues = EigValues[permute]
     EigVectors = EigVectors[:,permute]
-    EigVectors = np.linalg.inv(EigVectors)
     DensityMatrix = np.zeros((dim,dim))
-    # Set up density matrix
-    for j in range(dim):
-        DensityMatrix += np.outer(EigVectors[:,j],EigVectors[:,j])
-    print(DensityMatrix)
+    # Set up density matrix for lowest-lying state
+    DensityMatrix = np.outer(EigVectors[:,0],EigVectors[:,0])
+    # Project down on substates and find density matrix for subsystem
     d = np.matrix([[1,0],[0,1]])
     v1 = [1.0,0.0]
     proj1 = np.kron(v1,d)
@@ -166,8 +165,11 @@ for i in range(n):
     v2 = [0.0,1.0]
     proj2 = np.kron(v2,d)
     x2 = proj2 @ DensityMatrix @ proj2.T
-    total = -(x1+x2) @ log2M(x1+x2)
-    print(total)
+    # Total density matrix for subsystem
+    total = x1+x2
+    # Entropy
+    Entropy[i] = -np.matrix.trace(total @ log2M(total))
+
     Eigenvalue[0,i] = EigValues[0]
     Eigenvalue[1,i] = EigValues[1]
     Eigenvalue[2,i] = EigValues[2]
@@ -177,30 +179,11 @@ plt.plot(lmbd, Eigenvalue[2,:] ,'r-',lmbd, Eigenvalue[3,:],'y-',)
 plt.xlabel('$\lambda$')
 plt.ylabel('Eigenvalues')
 plt.show()
+plt.plot(lmbd, Entropy)
+plt.xlabel('$\lambda$')
+plt.ylabel('Entropy')          
+plt.show
 !ec
 
 
 
-!bc pycod
-%matplotlib inline
-from  matplotlib import pyplot as plt
-import numpy as np
-dim = 4
-density = np.zeros((dim,dim))
-basis = [1.0, 0.0, 0.0, 1.0]
-density = 0.5*np.outer(basis,basis)
-print(density)
-d = np.matrix([[1,0],[0,1]])
-v1 = [1.0,0.0]
-proj1 = np.kron(v1,d)
-print(proj1)
-x1 = proj1 @ density @ proj1.T
-print(x1)
-v2 = [0.0,1.0]
-proj2 = np.kron(v2,d)
-print(proj2)
-x2 = proj2 @ density @ proj2.T
-print(x2)
-total = x1+x2
-print(np.matrix.trace(-total @ log2M(total)))
-!ec
