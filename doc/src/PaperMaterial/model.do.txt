@@ -234,7 +234,7 @@ S(A,B)=-\mathrm{Tr}\left(\rho_{A,B}\log_2 (\rho_{A,B})\right).
 The example here shows the above von Neumann entropy based on the
 density matrix for the lowest many-body state. We see clearly a jump
 in the entropy around the point where we have a level crossing. At
-interaction strenght $\lammbda=0$ we have many-body states purely
+interaction strenght $\lambda=0$ we have many-body states purely
 defined by their computational basis states. As we switch on the
 interaction strength, we obtain an increased degree of mixing and the
 entropy increases till we reach the level crossing point where we see
