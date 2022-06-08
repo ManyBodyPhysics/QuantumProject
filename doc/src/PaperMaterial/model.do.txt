@@ -197,7 +197,7 @@ first eigenstate (lowest energy $E_0$) $\Psi_0$ is
 
 !bt
 \[
-\rho_{\Psi_0}=\left(\alpha_{00}\vert 00 \rangle\langle 00\vert+\alpha_{10}\vert 10 \rangle\langle 10\vert+\alpha_{01}\vert 01 \rangle\langle 01\vert+\alpha_{11}\vert 11 \rangle\langle 11\vert\right),
+\rho_0=\left(\alpha_{00}\vert 00 \rangle\langle 00\vert+\alpha_{10}\vert 10 \rangle\langle 10\vert+\alpha_{01}\vert 01 \rangle\langle 01\vert+\alpha_{11}\vert 11 \rangle\langle 11\vert\right),
 \]
 !et
 
@@ -207,7 +207,7 @@ then in turn define the density matrix for the subsets $A$ or $B$ as
 
 !bt
 \[
-\rho_A=\mathrm{Tr}_B(\rho_{\Psi_0})={B}_\langle 0 \vert \rho_{\Psi_0} \vert 0\rangle_{B}+{B}_\langle 1 \vert \rho_{\Psi_0} \vert 1\rangle_{B},
+\rho_A=\mathrm{Tr}_B(\rho_{0})=\langle 0 \vert \rho_{0} \vert 0\rangle_{B}+\langle 1 \vert \rho_{0} \vert 1\rangle_{B},
 \]
 !et
 
@@ -215,7 +215,7 @@ or
 
 !bt
 \[
-\rho_B=\mathrm{Tr}_A(\rho_{\Psi_0})={A}_\langle 0 \vert \rho_{\Psi_0} \vert 0\rangle_{A}+{A}_\langle 1 \vert \rho_{\Psi_0} \vert 1\rangle_{A}.
+\rho_B=\mathrm{Tr}_A(\rho_{\Psi_0})=\langle 0 \vert \rho_{0} \vert 0\rangle_{A}+\langle 1 \vert \rho_{0} \vert 1\rangle_{A}.
 \]
 !et
 
@@ -227,16 +227,22 @@ defined as
 
 !bt
 \[
-S(A,B)=-\mathrm{Tr}\left(\rho_{A,B}\log_2 (\rho_{A,B})\right.
+S(A,B)=-\mathrm{Tr}\left(\rho_{A,B}\log_2 (\rho_{A,B})\right).
 \]
 !et
 
-The example here shows the above von-Neumann entropy based on the
+The example here shows the above von Neumann entropy based on the
 density matrix for the lowest many-body state. We see clearly a jump
-in the entropy around the point where we have a level crossing. The
-most important result from this example is that entanglemnet is driven
-by the Hamiltonian itself and the strength of the interaction matrix
-elements and the non-interacting energies.
+in the entropy around the point where we have a level crossing. At
+interaction strenght $\lammbda=0$ we have many-body states purely
+defined by their computational basis states. As we switch on the
+interaction strength, we obtain an increased degree of mixing and the
+entropy increases till we reach the level crossing point where we see
+an additional and sudden increase in entropy. Similar behaviors are
+observed for the other states. The most important result from this
+example is that entanglement is driven by the Hamiltonian itself and
+the strength of the interaction matrix elements and the
+non-interacting energies.
 
 !bc pycod
 %matplotlib inline
@@ -304,5 +310,23 @@ plt.show
 !ec
 
 
-With these introductory examples, we are now in the position where we can start to interpret and model realistic interacting many-electron systems in terms of the strength of the Coulomb interaction and the shapes of the potential well. More text to be added here.
+With these introductory examples, we are now in the position where we
+can start to interpret and model realistic interacting many-electron
+systems in terms of the strength of the Coulomb interaction and the
+shapes of the potential well. Our specific system is composed of two
+potential wells with one fermion (electrons in our case) trapped in
+each well.  Each potential well can sustain a certain number of bound
+single-particle states and define our subsystems $A$ and $B$. The
+non-interacting part of the Hamiltonian is given by the mere addition
+of the single-particle energies from each repsective well (make figure
+with labels A and B and single-particle energies).
 
+The eigenstates of the non-interacting Hamiltonian $H_0$ are given by
+computational basis states with the difference that now we have more
+than two states in each subsystem. The depths and of the potential
+wells and their respective distances can be tuned in an experimental
+set up. The theoretical calculations presented here can thus serve as
+a tool which aids in finding the optimal parameters in order to study
+entanglement in a many-body environment.
+
+What follows here is a description of the theoretical models used to simulate the two-electron system.
