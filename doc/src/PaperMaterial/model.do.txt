@@ -136,9 +136,9 @@ X = 2.0
 Xp = 3.0
 # Non-diagonal part as sigma_x tensor product with sigma_x
 sx = np.matrix([[0,1],[1,0]])
+sx2 = X*np.kron(sx, sx)
 # Diagonal part as sigma_z tensor product with sigma_z
 sz = np.matrix([[1,0],[0,-1]])
-sx2 = X*np.kron(sx, sx)
 sz2 = Xp*np.kron(sz, sz)
 noninteracting = [0.0, 2.5, 6.5, 7.0]
 D = np.diag(noninteracting)
@@ -153,8 +153,8 @@ for i in range(n):
     permute = EigValues.argsort()
     EigValues = EigValues[permute]
     EigVectors = EigVectors[:,permute]
+    # Compute density matrix for selected system state, here ground state
     DensityMatrix = np.zeros((dim,dim))
-    # Set up density matrix for lowest-lying state
     DensityMatrix = np.outer(EigVectors[:,0],EigVectors[:,0])
     # Project down on substates and find density matrix for subsystem
     d = np.matrix([[1,0],[0,1]])
@@ -166,9 +166,9 @@ for i in range(n):
     x2 = proj2 @ DensityMatrix @ proj2.T
     # Total density matrix for subsystem
     total = x1+x2
-    # Entropy
+    # von Neumann Entropy for subsystem 
     Entropy[i] = -np.matrix.trace(total @ log2M(total))
-
+    # Plotting eigenvalues and entropy as functions of interaction strengths
     Eigenvalue[0,i] = EigValues[0]
     Eigenvalue[1,i] = EigValues[1]
     Eigenvalue[2,i] = EigValues[2]
