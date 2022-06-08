@@ -316,17 +316,17 @@ systems in terms of the strength of the Coulomb interaction and the
 shapes of the potential well. Our specific system is composed of two
 potential wells with one fermion (electrons in our case) trapped in
 each well.  Each potential well can sustain a certain number of bound
-single-particle states and define our subsystems $A$ and $B$. The
+single-particle states and defines our subsystems $A$ and $B$. The
 non-interacting part of the Hamiltonian is given by the mere addition
 of the single-particle energies from each repsective well (make figure
 with labels A and B and single-particle energies).
 
 The eigenstates of the non-interacting Hamiltonian $H_0$ are given by
-computational basis states with the difference that now we have more
-than two states in each subsystem. The depths and of the potential
+various computational basis states with the difference from the above simple models that now we have more
+than two states in each subsystem. The depths of the potential
 wells and their respective distances can be tuned in an experimental
 set up. The theoretical calculations presented here can thus serve as
 a tool which aids in finding the optimal parameters in order to study
 entanglement in a many-body environment.
 
-What follows here is a description of the theoretical models used to simulate the two-electron system.
+What follows is a description of the theoretical models used to simulate the two-electron system. More text to come.
