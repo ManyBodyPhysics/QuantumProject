@@ -4,84 +4,79 @@
 
 
 
-In order to study the importance of level avoided crossings and entanglement, we study first a simple two-level system We let
-our hamiltonian depend linearly on a strength parameter $z$
+In order to study the importance of level avoided crossings and
+entanglement, we study first a simple two-level system. Thereafter we
+extend our level-crossing model to a four-level system which can be
+interpreted as composed of two separate (not necesseraly identical)
+subsystems.
+
+We let our hamiltonian depend linearly on a strength parameter $z$
+
 !bt
 \[
-       H=H_0+\lambda H_1,
+       H=H_0+\lambda H_\mathrm{I},
 \]
 !et
-with $\lambda \in [0,1]$, where the limits $\lambda=0$ and $\lambda=1$ represent the 
-non-interacting (or unperturbed) and fully interacting system, respectively.
-The model is an eigenvalue
-problem with only two available states, which we label
-$0$ and $1$, respectively. Below we will let 
-state $P$ represent the model-space
-eigenvalue whereas state $Q$ represents 
-the eigenvalue of the excluded space.
-The unperturbed solutions to this problem are
+
+with $\lambda \in [0,1]$, where the limits $\lambda=0$ and $\lambda=1$
+represent the non-interacting (or unperturbed) and fully interacting
+system, respectively.  The model is an eigenvalue problem with only
+two available states, which we label $\vert 0\rangle$ and $\vert
+1\rangle$, respectively. Below we will let state $\vert 0 \rangle$
+represent the lowest state (often referred to as model-space state)
+eigenvalue whereas state $\vert 1\rangle$ represents the eigenvalue of
+the excluded space.  The non-interacting solutions to our problem are
+
 !bt
 \begin{equation}
-       H_0\Phi_P =\epsilon_P\Phi_P
+       H_0\vert 0 \rangle =\epsilon_0\vert 0 \rangle,
 \end{equation}
 !et
 and
 !bt
 \begin{equation}
-       H_0\Phi_Q =\epsilon_Q\Phi_Q,
+       H_0\vert 1\rangle =\epsilon_1\vert 1\rangle,
 \end{equation}
 !et
-with $\epsilon_P < \epsilon_Q$. We label the off-diagonal
-matrix elements $X$, while $X_P=\bra{\Phi_P}H_1\ket{\Phi_P}$ and
-$X_Q=\bra{\Phi_Q}H_1\ket{\Phi_Q}$.
-The exact eigenvalues problem
+
+with $\epsilon_0 < \epsilon_1$. We label the off-diagonal matrix
+elements $X$, while $X_0=\langle 0 \vert H_I\vert 0 \rangle$ and
+$X_1=\langle 1 \vert H_1\vert 1 \rangle$.  The exact eigenvalue
+problem
+
 !bt
 \begin{equation}
-\left(\begin{array}{cc}\epsilon_P+z X_P &zX \\
-zX &\epsilon_Q+z X_Q \end{array}\right)
+\left(\begin{array}{cc}\epsilon_0+\lambda X_0 &\lambda X \\
+zX &\epsilon_1+\lambda X_1 \end{array}\right)
 \end{equation}
 !et
 yields
 !bt
 \begin{eqnarray}
      label{eq:exact}
-     E(z)=&\frac{1}{2}\left\{\epsilon_P +\epsilon_Q +zX_P
-     +zX_Q \pm \left(
-     \epsilon_Q -\epsilon_P +zX_Q-zX_P\right) \right. \\ \nonumber
-     & \left. \times\sqrt{1+\frac{4z^2X^2}{\left(
-     \epsilon_Q -\epsilon_P +zX_Q-zX_P\right)^2}}
+     E(\lambda)=&\frac{1}{2}\left\{\epsilon_0 +\epsilon_1 +\lambda X_0
+     +\lambda X_1 \pm \left(
+     \epsilon_1 -\epsilon_0 +\lambda X_1-\lambda X_0\right) \right. \\ \nonumber
+     & \left. \times\sqrt{1+\frac{4\lambda^2X^2}{\left(
+     \epsilon_1 -\epsilon_0 +\lambda X_1-\lambda X_0\right)^2}}
      \right\}.
 \end{eqnarray}
 !et
-An RS expansion for the lowest
-eigenstate (defining states $P$ and $Q$ as the model and excluded
-spaces, respectively) can be obtained by expanding the lowest
-eigenvalue as
-!bt
-\begin{equation}
-      E=\epsilon_P +zX_P+\frac{z^2X^2}{\epsilon_P -\epsilon_Q}+
-      \frac{z^3X^2(X_Q-X_P)}{(\epsilon_P -\epsilon_Q)^2}+
-      \frac{z^4X^2(X_Q-X_P)^2}{(\epsilon_P -\epsilon_Q)^3}
-      -\frac{z^4X^4}{(\epsilon_P -\epsilon_Q)^3}+\dots,
-      \label{eq:modela}
-\end{equation}
-!et
-which can be viewed as an effective interaction for state $P$ in which
-state $Q$ is taken into account to successive orders of the perturbation.
-In this work we choose the parameters $\epsilon_P=0$, $\epsilon_Q=4$,
-$X_P=-X_Q=3$ and $X=0.2$. The exact solutions
-given by eq.\ (ref{eq:exact})
-are shown in fig.\ 1 as functions of the
-strength parameter $z$. Pertinent to our choice of
-parameters, is that at $z\geq 2/3$,  the lowest eigenstate is
-dominated by $\Phi_Q$ while the upper is $\Phi_P$. At $z=1$ the
-$\Phi_P$ mixing of the lowest eigenvalue
-is $1\%$ while for $z\leq 2/3$
-we have a $\Phi_P$ component of more than $90\%$.
-The character of the eigenvectors has therefore been interchanged
-when passing $z=2/3$. The value of the parameter $X$ represents the
-strength of the coupling between the model space and the excluded space.
-Thus, this simple Hamiltonian can be used to find the eigenpairs rather easily. The following code computes and plots the eigenvalues. Note that here we permute the eigenvalues as functions of 
+
+In the results below we set the parameters $\epsilon_0=0$,
+$\epsilon_1=4$, $X_0=-X_1=3$ and $X=0.2$.  This eigenvalue problem can
+easily be rewritten in terms of the standard Pauli matrices.  The
+non-interacting solutions represent our computational basis.
+Pertinent to our choice of parameters, is that at $\lambda\geq 2/3$,
+the lowest eigenstate is dominated by $\vert 1\rangle$ while the upper
+is $\vert 0 \rangle$. At $\lambda=1$ the $\vert 0 \rangle$ mixing of
+the lowest eigenvalue is $1\%$ while for $\lambda\leq 2/3$ we have a
+$\vert 0 \rangle$ component of more than $90\%$.  The character of the
+eigenvectors has therefore been interchanged when passing $z=2/3$. The
+value of the parameter $X$ represents the strength of the coupling
+between the model space and the excluded space.  The following code
+computes and plots the eigenvalues.
+
 !bc pycod
 %matplotlib inline
 
@@ -116,6 +111,47 @@ plt.xlabel('$z$')
 plt.ylabel('Eigenvalues')
 plt.show()
 !ec
+
+
+This simple model exhibits a simple level crossing where the
+composition of the final interacting states change character as we
+gradually switch on the interaction.  In order to study how
+entanglement relates to level crossing and the main results of our
+investigations, we extend the simple two-level system to a four level
+system. This system can be thought of as composed of two subsystems
+$A$ and $B$. Each subsystem has computational basis states
+
+!bt
+\[
+\vert 0\rangle_{\mathrm{A,B}}=\begin{bmatrix} 1 & 0\end{bmatrix}^T \hspace{1cm} \vert 1\rangle_{\mathrm{A,B}}=\begin{bmatrix} 0 & 1\end{bmatrix}^T.
+\]
+!et
+The subsystems could represent single particles or composite many-particle systems of a given symmetry.
+This leads to the many-body computational basis states
+
+!bt
+\[
+\vert 00\rangle = \vert 0\rangle_{\mathrm{A}\otimes \vert 0\rangle_{\mathrm{B}=\begin{bmatrix} 1 & 0 & 0 &0\end{bmatrix}^T,
+\]
+!et
+and
+!bt
+\[
+\vert 10\rangle = \vert 1\rangle_{\mathrm{A}\otimes \vert 0\rangle_{\mathrm{B}=\begin{bmatrix} 0 & 1 & 0 &0\end{bmatrix}^T,
+\]
+!et
+and
+!bt
+\[
+\vert 01\rangle = \vert 0\rangle_{\mathrm{A}\otimes \vert 1\rangle_{\mathrm{B}=\begin{bmatrix} 0 & 0 & 1 &0\end{bmatrix}^T,
+\]
+!et
+and finally
+!bt
+\[
+\vert 11\rangle = \vert 1\rangle_{\mathrm{A}\otimes \vert 1\rangle_{\mathrm{B}=\begin{bmatrix} 0 & 0 & 0 &1\end{bmatrix}^T.
+\]
+!et
 
 
 
