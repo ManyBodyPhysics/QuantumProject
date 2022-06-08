@@ -1,6 +1,6 @@
 
 
-===== Level crossing and entanglement in a simple  solvable model =====
+===== Level crossing and entanglement in simple  models =====
 
 
 
@@ -107,7 +107,7 @@ for i in range(n):
     Eigenvalue[0,i] = EigValues[0]
     Eigenvalue[1,i] = EigValues[1]
 plt.plot(lmbd, Eigenvalue[0,:] ,'b-',lmbd, Eigenvalue[1,:],'g-',)
-plt.xlabel('$z$')
+plt.xlabel('$\lambda$')
 plt.ylabel('Eigenvalues')
 plt.show()
 !ec
@@ -153,7 +153,90 @@ and finally
 \]
 !et
 
+These computational basis states define also the eigenstates of the non-interacting  Hamiltonian
+!bt
+\[
+H_0\vert 00 \rangle = \epsilon_{00}\vert 00 \rangle,
+\]
+!et
+!bt
+\[
+H_0\vert 10 \rangle = \epsilon_{10}\vert 10 \rangle,
+\]
+!et
+!bt
+\[
+H_0\vert 01 \rangle = \epsilon_{01}\vert 01 \rangle,
+\]
+!et
+and
+!bt
+\[
+H_0\vert 11 \rangle = \epsilon_{11}\vert 11 \rangle.
+\]
+!et
+The interacting part of the Hamiltonian $H_{\mathrm{I}}$ is given by the tensor product of two $\sigma_x$ and $\sigma_z$  matrices, respectively, that is
+!bt
+\[
+H_{\mathrm{I}}=H_x\sigma_x\otimes\sigma_x+H_z\sigma_z\otimes\sigma_z,
+\]
+!et
+where $H_x$ and $H_z$ are interaction strength parameters. Our final Hamiltonian matrix is given by
+!bt
+\[
+\bm{H}=\begin{bmatrix} \epsilon_{00}+H_z & 0 & 0 & H_x \\
+                       0  & \epsilon_{10}-H_z & H_x & 0 \\
+		       0 & H_x & \epsilon_{01}+H_z & H_x \\
+		       H_x & 0 & 0 & \epsilon_{11} -H_z \end{bmatrix}.
+\] 
+!et
 
+The four eigenstates of the above Hamiltonian matrix can in turn be used to
+define density matrices. As an example, the density matrix of the
+first eigenstate (lowest energy $E_0$) $\Psi_0$ is
+
+!bt
+\[
+\rho_{\Psi_0}=\left(\alpha_{00}\vert 00 \rangle\langle 00\vert+\alpha_{10}\vert 10 \rangle\langle 10\vert+\alpha_{01}\vert 01 \rangle\langle 01\vert+\alpha_{11}\vert 11 \rangle\langle 11\vert\right),
+\]
+!et
+
+where the coefficients $\alpha_{ij}$ are the eigenvector coefficients
+resulting from the solution of the above eigenvalue problem.  We can
+then in turn define the density matrix for the subsets $A$ or $B$ as
+
+!bt
+\[
+\rho_A=\mathrm{Tr}_B(\rho_{\Psi_0})={B}_\langle 0 \vert \rho_{\Psi_0} \vert 0\rangle_{B}+{B}_\langle 1 \vert \rho_{\Psi_0} \vert 1\rangle_{B},
+\]
+!et
+
+or
+
+!bt
+\[
+\rho_B=\mathrm{Tr}_A(\rho_{\Psi_0})={A}_\langle 0 \vert \rho_{\Psi_0} \vert 0\rangle_{A}+{A}_\langle 1 \vert \rho_{\Psi_0} \vert 1\rangle_{A}.
+\]
+!et
+
+The density matrices for these subsets can be used to compute the
+so-called von Neumann entropy, which is one of the possible measures
+of entanglement. A pure state has entropy equal zero while entangled
+state have an entropy larger than zero. The von-Neumann entropy is
+defined as
+
+!bt
+\[
+S(A,B)=-\mathrm{Tr}\left(\rho_{A,B}\log_2 (\rho_{A,B})\right.
+\]
+!et
+
+The example here shows the above von-Neumann entropy based on the
+density matrix for the lowest many-body state. We see clearly a jump
+in the entropy around the point where we have a level crossing. The
+most important result from this example is that entanglemnet is driven
+by the Hamiltonian itself and the strength of the interaction matrix
+elements and the non-interacting energies.
 
 !bc pycod
 %matplotlib inline
@@ -168,14 +251,14 @@ Hamiltonian = np.zeros((dim,dim))
 #number of lambda values
 n = 40
 lmbd = np.linspace(0.0,1.0,n)
-X = 2.0
-Xp = 3.0
+Hx = 2.0
+Hz = 3.0
 # Non-diagonal part as sigma_x tensor product with sigma_x
 sx = np.matrix([[0,1],[1,0]])
-sx2 = X*np.kron(sx, sx)
+sx2 = Hx*np.kron(sx, sx)
 # Diagonal part as sigma_z tensor product with sigma_z
 sz = np.matrix([[1,0],[0,-1]])
-sz2 = Xp*np.kron(sz, sz)
+sz2 = Hz*np.kron(sz, sz)
 noninteracting = [0.0, 2.5, 6.5, 7.0]
 D = np.diag(noninteracting)
 Eigenvalue = np.zeros((dim,n))
@@ -221,4 +304,5 @@ plt.show
 !ec
 
 
+With these introductory examples, we are now in the position where we can start to interpret and model realistic interacting many-electron systems in terms of the strength of the Coulomb interaction and the shapes of the potential well. More text to be added here.
 
