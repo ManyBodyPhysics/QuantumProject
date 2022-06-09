@@ -322,11 +322,13 @@ of the single-particle energies from each repsective well (make figure
 with labels A and B and single-particle energies).
 
 The eigenstates of the non-interacting Hamiltonian $H_0$ are given by
-various computational basis states with the difference from the above simple models that now we have more
-than two states in each subsystem. The depths of the potential
-wells and their respective distances can be tuned in an experimental
-set up. The theoretical calculations presented here can thus serve as
-a tool which aids in finding the optimal parameters in order to study
-entanglement in a many-body environment.
+various computational basis states with the difference from the above
+simple models that now we have more than two states in each
+subsystem. The depths of the potential wells and their respective
+distances can be tuned in an experimental set up. The theoretical
+calculations presented here can thus serve as a tool which aids in
+finding the optimal parameters in order to study entanglement in a
+many-body environment.
 
-What follows is a description of the theoretical models used to simulate the two-electron system. More text to come.
+What follows is a description of the theoretical models used to
+simulate the two-electron system. More text to come.
